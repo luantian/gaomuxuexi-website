@@ -1,0 +1,13 @@
+log/
+*.DS_Store
+dump*
+node_modules/
+.idea/*
+npm-debug.log
+*.zip
+lib/crashHandle
+public/js/aq.js
+public/uploads/
+routes/itCount.json
+routes/IA/gift/oreControl.json
+config/config.js 
