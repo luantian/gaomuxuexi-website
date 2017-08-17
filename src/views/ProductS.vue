@@ -10,12 +10,45 @@
               <a class="pulse" href="">现在下载</a>
             </div>
           </div>
-          
         </div>
       </swiper-slide>
-      <swiper-slide>Slide 2</swiper-slide>
-      <swiper-slide>Slide 3</swiper-slide>
-      <swiper-slide>Slide 4</swiper-slide>
+      <swiper-slide>
+        <div class="page2">
+          <div class="content">
+            
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="page3">
+          <div class="content">
+            <ul class="clearfix">
+              <li><img src="../img/productS_3_1.png" alt=""></li>
+              <li><img src="../img/productS_3_2.png" alt=""></li>
+              <li><img src="../img/productS_3_3.png" alt=""></li>
+            </ul>
+            <div class="des">
+              <h3>高效 EFFICIENCY</h3>
+              <p>海量中考真题、优质学习资源全收录。</p>
+              <p>大数据驱动精准打击薄弱知识点，彻底脱离低效乏味的题海战术。</p>
+            </div>
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="page4">
+          <div class="content">
+            <ul class="clearfix">
+              <li><img src="../img/productS_4_4.png" alt=""></li>
+              <li>
+                <h2>兴趣 INTEREST</h2>
+                <p>趣味交互激发学习主动性</p>
+                <p>与全班同学同场竞技，共同进步。</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
@@ -78,6 +111,7 @@
       width: 100%;
       height: 100%;
       min-height: 800px;
+      position: relative;
       background: url(../img/productSBg.jpg) no-repeat center center;
       > .content {
         position: absolute;
@@ -112,6 +146,85 @@
             color: #fff;
             text-decoration: none;
             font-size: 24px;
+          }
+        }
+      }
+    }
+    .page2 {
+      width: 100%;
+      height: 100%;
+      min-height: 800px;
+      position: relative;
+    }
+    .page3 {
+      width: 100%;
+      height: 100%;
+      min-height: 800px;
+      position: relative;
+      background: #e5f1fa;
+      > .content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left:0;
+        right:0;
+        margin: auto;
+        width: 1000px;
+        height: 750px;
+        > ul {
+          margin: 0;
+          list-style: none;
+          > li {
+            float: left;
+            margin-left: 20px;
+            > img {
+              width: 284px;
+              height: 508px;
+            }
+          }
+        }
+
+        > .des {
+          position: absolute;
+          bottom: 10px;
+          right: 0;
+          left: 0;
+          text-align: center;
+          > h3 {
+            font-size: 30px;
+            color: #333;
+            font-weight: normal;
+            margin: 20px;
+          }
+          > p {
+            padding: 10px 0;
+            margin: 0;
+            color: #333;
+          }
+        }
+      }
+    }
+    .page4 {
+      width: 100%;
+      height: 100%;
+      min-height: 800px;
+      position: relative;
+      background: #fff;
+      > .content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left:0;
+        right:0;
+        margin: auto;
+        width: 1000px;
+        height: 640px;
+        > ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          > li {
+            float: left;
           }
         }
       }
