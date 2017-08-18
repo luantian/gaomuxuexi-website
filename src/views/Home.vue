@@ -69,7 +69,7 @@ export default {
     height: 100%;
     min-height: 800px;
     position: relative;
-    background: url(../img/homeBg.jpg) no-repeat center center;
+    background: url(/static/homeBg.jpg) no-repeat center center;
     > .main {
       position: absolute;
       top: 0;

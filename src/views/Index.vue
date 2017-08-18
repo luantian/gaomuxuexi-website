@@ -3,7 +3,7 @@
     <div class="NavBarWrap">
       <NavBar></NavBar>
     </div>
-    <div class="routerViewWrap">
+    <div id="routerViewWrap">
       <!-- <transition :name="transitionName">
         
       </transition> -->
@@ -66,10 +66,11 @@ export default {
     left: 0;
   }  
 
-  .routerViewWrap {
+  #routerViewWrap {
     height: 100%;
     overflow-y: auto;
     margin-left: 300px;
+    transition: .2s;
   }
 
   .router {

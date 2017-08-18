@@ -3,7 +3,7 @@
     <!-- 导航栏logo -->
     <div class="logoWrap">
       <router-link to="/">
-        <div class="qq"><img src="./../img/logo.png" ></div>
+        <div class="qq"><img src="/static/logo.png" ></div>
       </router-link>
     </div>
 
@@ -39,7 +39,7 @@
     <!-- 导航栏底部文案和公众号 -->
     <div class="navbar-footer">
       <p>关注高木学习公众号</p>
-      <img src="./../img/wx-code.png" alt="">
+      <img src="/static/wx-code.png" alt="微信公众号二维码">
       <p>恒创鑫业科技（深圳）有限公司版权所有</p>
       <p>粤ICP备15101825</p>
     </div>

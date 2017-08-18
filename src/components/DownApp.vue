@@ -3,7 +3,7 @@
     <div id="content" class="clearfix">
       <dl>
         <dt>高木学习学生手机版</dt>
-        <dd class="centerDD"><img src="./../img/down-app.png" alt=""></dd>
+        <dd class="centerDD"><img src="/static/img/down-app.png" alt=""></dd>
         <dd class="bottomDD">扫一扫下载手机版</dd>
       </dl>
       <dl>

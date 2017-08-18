@@ -19,6 +19,7 @@ html {
 body {
   height: 100%;
   overflow: hidden;
+  font-family: "微软雅黑";
 }
 
 #app {

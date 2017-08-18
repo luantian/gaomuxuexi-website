@@ -23,9 +23,9 @@
         <div class="page3">
           <div class="content">
             <ul class="clearfix">
-              <li><img src="../img/productS_3_1.png" alt=""></li>
-              <li><img src="../img/productS_3_2.png" alt=""></li>
-              <li><img src="../img/productS_3_3.png" alt=""></li>
+              <li><img src="/static/productS_3_1.png" alt=""></li>
+              <li><img src="/static/productS_3_2.png" alt=""></li>
+              <li><img src="/static/productS_3_3.png" alt=""></li>
             </ul>
             <div class="des">
               <h3>高效 EFFICIENCY</h3>
@@ -39,7 +39,7 @@
         <div class="page4">
           <div class="content">
             <ul class="clearfix">
-              <li><img src="../img/productS_4_4.png" alt=""></li>
+              <li><img src="/static/productS_4_4.png" alt=""></li>
               <li>
                 <h2>兴趣 INTEREST</h2>
                 <p>趣味交互激发学习主动性</p>
@@ -99,6 +99,23 @@
   @mixin transitions($value) {
     @include prefix(transition, $value);
   }
+
+  @mixin page {
+    width: 100%;
+    height: 100%;
+    min-height: 800px;
+    position: relative;
+  }
+
+  @mixin content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    margin: auto;
+    width: 1000px;
+  }
   
   #productS {
     width: 100%;
@@ -108,19 +125,10 @@
     position: relative;
 
     .page1 {
-      width: 100%;
-      height: 100%;
-      min-height: 800px;
-      position: relative;
-      background: url(../img/productSBg.jpg) no-repeat center center;
+      @include page;
+      background: url(/static/productSBg.jpg) no-repeat center center;
       > .content {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left:0;
-        right:0;
-        margin: auto;
-        width: 1000px;
+        @include content;
         height: 300px;
         > h2 {
           margin: 0;
@@ -151,25 +159,13 @@
       }
     }
     .page2 {
-      width: 100%;
-      height: 100%;
-      min-height: 800px;
-      position: relative;
+      @include page;
     }
     .page3 {
-      width: 100%;
-      height: 100%;
-      min-height: 800px;
-      position: relative;
+      @include page;
       background: #e5f1fa;
       > .content {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left:0;
-        right:0;
-        margin: auto;
-        width: 1000px;
+        @include content;
         height: 750px;
         > ul {
           margin: 0;
@@ -205,19 +201,10 @@
       }
     }
     .page4 {
-      width: 100%;
-      height: 100%;
-      min-height: 800px;
-      position: relative;
+      @include page;
       background: #fff;
       > .content {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left:0;
-        right:0;
-        margin: auto;
-        width: 1000px;
+        @include content;
         height: 640px;
         > ul {
           list-style: none;
@@ -225,6 +212,12 @@
           margin: 0;
           > li {
             float: left;
+            margin-right: 50px;
+            > h2 {
+              margin-top: 280px;
+              font-size: 30px;
+              color: #333;
+            }
           }
         }
       }
