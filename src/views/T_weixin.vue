@@ -1,5 +1,23 @@
 <template>
-  <div>
-    T_weixin
-  </div>
+  <guide page="t_weixin"></guide>
 </template>
+
+<script>
+
+  import guide from '../components/guide';
+
+  export default {
+    data() {
+      return {}
+    },
+    components: {
+      guide
+    }
+  }
+  
+</script>
+
+<style scoped lang="scss">
+  
+
+</style>
