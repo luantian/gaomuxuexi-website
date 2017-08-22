@@ -1,5 +1,5 @@
 <template>
-  <div id="S_tel">
+  <div id="guide">
     <div class="main">
       <h2>操作指南</h2>
       <div class="content clearfix">
@@ -146,7 +146,7 @@
 
 <style scoped lang="scss">
   
-  #S_tel {
+  #guide {
     width: 100%;
     min-width: 1000px;
     height: 100%;
