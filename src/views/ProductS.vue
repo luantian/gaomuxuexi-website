@@ -1,25 +1,33 @@
 <template>
   <div id="productS">
-    <swiper :options="swiperOption">
-      <swiper-slide>
+    <!-- <swiper :options="swiperOption">
+      <swiper-slide> -->
         <div class="page1">
           <div class="content">
             <h2>高木学生版</h2>
             <h4>孩子们唯一的相同是处处不同，即刻享受全新个性化学习</h4>
             <div class="btns">
-              <a class="pulse" href="">现在下载</a>
+              <a class="pulse" @click="showDownAppDialog">现在下载</a>
             </div>
           </div>
         </div>
-      </swiper-slide>
-      <swiper-slide>
+      <!-- </swiper-slide>
+      <swiper-slide> -->
         <div class="page2">
-          <div class="content">
-            
+          <div class="content clearfix">
+            <dl>
+              <dt>个性化 INDIVIDUALIZED</dt>
+              <dd>深度挖掘每位用户的学习行为数据，智能</dd>
+              <dd>推送最适合的习题和学习资源。</dd>
+              <dd>如同你的私人专属老师。</dd>
+            </dl>
+            <div class="product4_imgWrap">
+              <img src="/static/productS_2.png" alt="">
+            </div>
           </div>
         </div>
-      </swiper-slide>
-      <swiper-slide>
+      <!-- </swiper-slide>
+      <swiper-slide> -->
         <div class="page3">
           <div class="content">
             <ul class="clearfix">
@@ -34,8 +42,8 @@
             </div>
           </div>
         </div>
-      </swiper-slide>
-      <swiper-slide>
+      <!-- </swiper-slide>
+      <swiper-slide> -->
         <div class="page4">
           <div class="content">
             <ul class="clearfix">
@@ -48,13 +56,16 @@
             </ul>
           </div>
         </div>
-      </swiper-slide>
+      <!-- </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
-    </swiper>
+    </swiper> -->
+    <DownApp ref="downAppDialog"></DownApp>
   </div>
 </template>
  
 <script>
+
+  import DownApp from '../components/DownApp';
 
   export default {
     data() {
@@ -68,6 +79,14 @@
           mousewheelControl: true,
           height: window.innerHeight > 800 ? window.innerHeight : 800
         }
+      }
+    },
+    components: {
+      DownApp
+    },
+    methods: {
+      showDownAppDialog() {
+        this.$refs.downAppDialog.show();
       }
     }
   }
@@ -136,12 +155,14 @@
           color: #fff;
           font-size: 60px;
           font-weight: 300;
+          @include animations(fadeUp 1s forwards);
         }
         > h4 {
           text-align: center;
           color: #fff;
           font-size: 36px;
           font-weight: 100;
+          @include animations(fadeUp 1.5s forwards);
         }
         > .btns {
           text-align: center;
@@ -155,11 +176,40 @@
             text-decoration: none;
             font-size: 24px;
           }
+          @include animations(fadeUp 1.8s forwards);
         }
       }
     }
     .page2 {
       @include page;
+      background: #fff;
+      > .content {
+        @include content;
+        height: 640px;
+        dl {
+          color: #333333;
+          padding-top: 200px;
+          float: left;
+          > dt {
+            font-size: 30px;
+            color: #333;
+            margin-bottom: 20px;
+          }
+          > dd {
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            margin-top: 10px;
+          }
+        }
+        .product4_imgWrap {
+          float: right;
+          > img {
+            width: 640px;
+            margin-top: 50px;
+          }
+        }
+      }
     }
     .page3 {
       @include page;
@@ -229,6 +279,7 @@
   }
 
   .pulse {
+    cursor: pointer;
     --color: #fff;
     --hover: #fff;
   }

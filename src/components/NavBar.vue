@@ -3,39 +3,49 @@
     <!-- 导航栏logo -->
     <div class="logoWrap">
       <router-link to="/">
-        <div class="qq"><img src="/static/logo.png" ></div>
+        <div class="logo" @click="noSelectSecondaryMenu">
+          <img src="/static/logo.png">
+        </div>
       </router-link>
     </div>
-
-    <ul class="navBtn">
-      <li @click="noSelectSecondaryMenu">
-        <router-link to="/">首页 HOME</router-link>
-      </li>
-      <li @mouseenter="childrenRouteMouseEnter('P')" @mouseleave="childrenRouteMouseleave('P')">
-        <a v-bind:class="['childrenRoute', isPchecked ? 'router-link-exact-active' : '']">产品 PRODUCT</a>
-        <transition name="slide-fade">
-          <ul v-if="isPShow">
-            <li v-for="item in SecondaryMenuProductData" @click="selectSecondaryMenu('P')">
-              <router-link v-bind:to="{path: item.to}">{{item.title}}</router-link>
-            </li>
-          </ul>
+    
+      <ul class="navBtn">
+        <transition name="fade1">
+          <li @click="noSelectSecondaryMenu" v-if="navLiShow">
+            <router-link to="/">首页 HOME</router-link>
+          </li>
         </transition>
-      </li>
-      <li @mouseenter="childrenRouteMouseEnter('G')" @mouseleave="childrenRouteMouseleave('G')">
-        <a v-bind:class="['childrenRoute', isGchecked ? 'router-link-exact-active' : '']">操作指南 Guide</a>
-        <transition name="slide-fade">
-          <ul v-if="isGShow">
-            <li v-for="item in SecondaryMenuGuideData" @click="selectSecondaryMenu('G')">
-              <router-link v-bind:to="{path: item.to}">{{item.title}}</router-link>
-            </li>
-          </ul>
+        <transition name="fade2">
+          <li @mouseenter="childrenRouteMouseEnter('P')" @mouseleave="childrenRouteMouseleave('P')" v-if="navLiShow">
+            <a v-bind:class="['childrenRoute', isPchecked ? 'router-link-exact-active' : '']">产品 PRODUCT</a>
+            <transition name="slide-fade">
+              <ul v-if="isPShow">
+                <li v-for="item in SecondaryMenuProductData" @click="selectSecondaryMenu('P')">
+                  <router-link v-bind:to="{path: item.to}">{{item.title}}</router-link>
+                </li>
+              </ul>
+            </transition>
+          </li>
         </transition>
-      </li>
-      <li @click="noSelectSecondaryMenu">
-        <router-link to="/ConnectUs">联系我们 CONNECT</router-link>
-      </li>
-    </ul>
-
+        <transition name="fade3">
+          <li @mouseenter="childrenRouteMouseEnter('G')" @mouseleave="childrenRouteMouseleave('G')" v-if="navLiShow">
+            <a v-bind:class="['childrenRoute', isGchecked ? 'router-link-exact-active' : '']">操作指南 Guide</a>
+            <transition name="slide-fade">
+              <ul v-if="isGShow">
+                <li v-for="item in SecondaryMenuGuideData" @click="selectSecondaryMenu('G')">
+                  <router-link v-bind:to="{path: item.to}">{{item.title}}</router-link>
+                </li>
+              </ul>
+            </transition>
+          </li>
+        </transition>
+        <transition name="fade4">
+          <li @click="noSelectSecondaryMenu" v-if="navLiShow">
+            <router-link to="/ConnectUs">联系我们 CONNECT</router-link>
+          </li>
+        </transition>
+      </ul>
+    
     <!-- 导航栏底部文案和公众号 -->
     <div class="navbar-footer">
       <p>关注高木学习公众号</p>
@@ -48,11 +58,11 @@
 
 <script>
 
-
 export default {
   name: 'navbar',
   data () {
     return {
+      navLiShow: false,
       isPShow: false,
       isGShow: false,
       isPchecked: false,
@@ -97,6 +107,7 @@ export default {
   },
   mounted () {
     this.isFirstMenu();
+    this.navLiShow = true;
   },
   methods: {
     //根据href判断一级菜单是否选中
@@ -136,7 +147,6 @@ export default {
         case 'P':
           this.isPchecked = true;
           this.isGchecked = false;
-          
           break;
         case 'G':
           this.isGchecked = true;
@@ -148,7 +158,8 @@ export default {
     noSelectSecondaryMenu() {//选中非二级菜单执行的函数
       this.isPchecked = false;
       this.isGchecked = false;
-    }
+    },
+    
   }
 }
 </script>
@@ -156,6 +167,30 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style scoped lang="scss">
+
+  @mixin prefix($property, $value) {
+    -webkit-#{$property}: $value;
+    -moz-#{$property}: $value;
+    -ms-#{$property}: $value;
+    -o-#{$property}: $value;
+    #{$property}: $value;
+  }
+
+  @mixin transforms($value) {
+    @include prefix(transform, $value);
+  }
+
+  @mixin animations($value) {
+    @include prefix(animation, $value);
+  }
+
+  @mixin animations-delay($value) {
+    @include prefix(animation-delay, $value);
+  }
+
+  @mixin transitions($value) {
+    @include prefix(transition, $value);
+  }
 
   ul, li {
     margin: 0;
@@ -180,12 +215,14 @@ export default {
     z-index: 10000000;
   }
 
+
   .logoWrap { 
     height: 1%;
-    overflow: hidden; 
+    // overflow: hidden; 
     display: table; 
     border-spacing: 10px;
-    .qq {
+    position: relative;
+    .logo {
       width: $navbar-width;
       height: 200px;
       text-align: center; 
@@ -271,14 +308,45 @@ export default {
   }
 
   .slide-fade-enter-active {
-    transition: all .3s ease;
+    @include transitions(all .3s ease);
   }
   .slide-fade-leave-active {
-    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    // transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    @include transitions(all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0));
   }
   .slide-fade-enter, .slide-fade-leave-to {
-    transform: translateX(-20px);
+    @include transforms(translateX(-20px));
     opacity: 0;
+  }
+
+  
+  $transX: 800px;
+  .fade1-enter-active, .fade1-leave-active {
+    @include transitions(.4s);
+  }
+  .fade1-enter, .fade1-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+    @include transforms(translateY($transX));
+  }
+
+  .fade2-enter-active, .fade2-leave-active {
+    @include transitions(.4s .08s);
+  }
+  .fade2-enter, .fade2-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+    @include transforms(translateY($transX));
+  }
+
+  .fade3-enter-active, .fade3-leave-active {
+    @include transitions(.4s .16s);
+  }
+  .fade3-enter, .fade3-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+    @include transforms(translateY($transX));
+  }
+
+  .fade4-enter-active, .fade4-leave-active {
+    @include transitions(.4s .24s);
+  }
+  .fade4-enter, .fade4-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+    @include transforms(translateY($transX));
   }
 
 

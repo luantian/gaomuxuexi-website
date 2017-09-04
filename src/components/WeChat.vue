@@ -1,16 +1,11 @@
 <template>
   <transition name="fade">
     <div id="down-app" v-if="isShow">
-      <div id="content" class="clearfix">
+      <div id="content">
         <dl>
           <dt>高木学习学生手机版</dt>
-          <dd class="centerDD"><img src="/static/down-app.png" alt=""></dd>
+          <dd class="centerDD"><img src="/static/wechat.jpg" alt=""></dd>
           <dd class="bottomDD">扫一扫下载手机版</dd>
-        </dl>
-        <dl>
-          <dt>高木学习学生电脑版</dt>
-          <dd class="centerDD downloadWrap"><a href="http://www.gaomuxuexi.com/download/gaomusetup/gaomuxuexi_8.1_setup.exe"><i class="iconfont icon-download"></i></a></dd>
-          <dd class="bottomDD">点击下载安装</dd>
         </dl>
         <div class="close" @click="close"><i class="iconfont icon-cha"></i></div>
         <div class="bTitle">高木大数据学习平台</div>
@@ -62,10 +57,10 @@
       margin: auto;
       background: #fff;
       > dl {
-        width: 50%;
-        float: left;
+        width: 100%;
         text-align: center;
         margin-top: 88px;
+        text-align: center;
         > dt {
           text-align: center;
           color: #0074cd;
@@ -83,7 +78,10 @@
           line-height: 146px;
           margin: 0 auto;
           border: 1px solid #ccc;
-          
+          > img {
+            width: 143px;
+            height: 143px;
+          }
         }
         > dd.downloadWrap {
           border: 3px solid #e3f0fa;

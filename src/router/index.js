@@ -11,75 +11,65 @@ import S_pc from '@/views/S_pc';
 import T_web from '@/views/T_web';
 import T_weixin from '@/views/T_weixin';
 import P_weixin from '@/views/P_weixin';
+import Browser from '@/views/Browser';
 
 Vue.use(Router);
 
 export default new Router({
   mode: 'history',
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
       return {
         selector: to.hash
       }
-    }  
+    }
   },
-  routes: [
-    {
+  routes: [{
+    path: '/',
+    component: Index,
+    children: [{
       path: '/',
-      component: Index,
-      children: [
-        {
-          path: '/',
-          name: 'Home',
-          component: Home,
-        },
-        {
-          path: '/ConnectUs',
-          name: 'ConnectUs',
-          component: ConnectUs
-        },
-        {
-          path: '/ProductS',
-          name: 'ProductS',
-          component: ProductS
-        },
-        {
-          path: '/ProductT',
-          name: 'ProductT',
-          component: ProductT
-        },
-        {
-          path: '/ProductP',
-          name: 'ProductP',
-          component: ProductP
-        },
-        {
-          path: '/Guide_S_tel',
-          name: 'Guide_S_tel',
-          component: S_tel
-        },
-        {
-          path: '/Guide_S_pc',
-          name: 'Guide_S_pc',
-          component: S_pc
-        },
-        {
-          path: '/Guide_T_web',
-          name: 'Guide_T_web',
-          component: T_web
-        },
-        {
-          path: '/Guide_T_weixin',
-          name: 'Guide_T_weixin',
-          component: T_weixin
-        },
-        {
-          path: '/Guide_P_weixin',
-          name: 'Guide_P_weixin',
-          component: P_weixin
-        }
-      ]
-    },
-    
-  ]
+      name: 'Home',
+      component: Home,
+    }, {
+      path: '/ConnectUs',
+      name: 'ConnectUs',
+      component: ConnectUs
+    }, {
+      path: '/ProductS',
+      name: 'ProductS',
+      component: ProductS
+    }, {
+      path: '/ProductT',
+      name: 'ProductT',
+      component: ProductT
+    }, {
+      path: '/ProductP',
+      name: 'ProductP',
+      component: ProductP
+    }, {
+      path: '/Guide_S_tel',
+      name: 'Guide_S_tel',
+      component: S_tel
+    }, {
+      path: '/Guide_S_pc',
+      name: 'Guide_S_pc',
+      component: S_pc
+    }, {
+      path: '/Guide_T_web',
+      name: 'Guide_T_web',
+      component: T_web
+    }, {
+      path: '/Guide_T_weixin',
+      name: 'Guide_T_weixin',
+      component: T_weixin
+    }, {
+      path: '/Guide_P_weixin',
+      name: 'Guide_P_weixin',
+      component: P_weixin
+    }]
+  }, {
+    path: '/browser',
+    component: Browser
+  }]
 })

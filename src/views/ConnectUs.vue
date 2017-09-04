@@ -29,8 +29,6 @@ export default {
     return {
       show: false,
       markPoint: {lng: 113.946761, lat: 22.547476},
-
-
       infos: [
         {
           title: '邮编：518000',
